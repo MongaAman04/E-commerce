@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-details {
+            width: 100%;
+            display: flex;
+        }
+
+        .product-images {
+            width: 40%;
+            padding: 20px;
+           
+            
+        }
+
+        .other-images {
+           display:grid;
+            grid-template-columns: repeat(5,1fr);
+            /* gap: 3px; */
+            width: 100%;
+            height: 60px;
+            /* background-color: green; */
+        }
+
+        .s-img {
+            /* border: 1px solid black; */
+            overflow: hidden;
+            box-shadow: 3px 3px 6px rgb(214, 210, 210);
+        }
+        .s-img img{
+            width: 100%;
+            height: 99%;
+        }
+        .s-img:hover {
+            scale: 1.3;
+            transition: 0.4s;
+            box-shadow: 2px 2px 5px rgb(110, 107, 107);
+        }
+        .big-image{
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            box-shadow: 3px 3px 15px rgb(214, 210, 210);
+
+        }
+        .big-image img{
+            width: 100%;
+            height: 100%;
+           object-fit:fill;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 60%;
+            padding: 20px;
+            /* background-color: yellow; */
+        }
+        .buttons button{
+            width: 250px;
+            height: 60px;
+            margin-right: 10px;
+            font-size: 25px;
+            outline: none;
+            box-shadow: 5px 5px 15px black;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+        }
+        .buttons .buynow:hover{
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: black;
+            transition: 0.5s;
+            box-shadow: 2px 2px 10px black inset;
+        }
+        .buttons .addToCart:hover{
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: black;
+            box-shadow: 2px 2px 10px black inset;
+            transition: 0.5s;
+        }
+        .buynow{
+            background-color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .addToCart{
+            background-color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .sizes{
+            display: flex;
+            gap: 20px;
+        }
+        .size{
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--primary-color);
+            border-radius: 150px;
+            text-align: center;
+            padding-top: 10px;
+            font-weight: 500;
+            font-size: 20px;
+        }
+        .size:hover{
+            background-color: var(--primary-color);
+            color: white;
+            transition: 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <section class=" top-txt ">
+        <div class="head container ">
+            <div class="head-txt ">
+                <p>Free shipping, 30-day return or refund guarantee.</p>
+            </div>
+            <div class="sing_in_up ">
+                <a href="# ">SIGN IN</a>
+                <a href="# ">SIGN UP</a>
+            </div>
+        </div>
+    </section>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <input type="checkbox" name="" id="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sellers">Shop</a></li>
+                <li><a href="#news">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="logo">
+                <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="">
+            </div>
+        </div>
+    </nav>
+    <section class="product-details">
+        <div class="product-images">
+            <div class="other-images">
+                <div class="s-img">
+                    <img src="images/IMG-20230723-WA0003.jpg" alt="">
+                </div>
+                <div class="s-img">
+                    <img src="images/IMG-20230723-WA0004.jpg" alt="">
+                </div>
+                <div class="s-img">
+                    <img src="images/IMG-20230723-WA0005.jpg" alt="">
+                </div>
+                <div class="s-img">
+                    <img src="images/IMG-20230723-WA0006.jpg" alt="">
+                </div>
+                <div class="s-img">
+                    <img src="images/IMG-20230726-WA0007.jpg" alt="">
+                </div>
+                </div>
+                <div class="big-image">
+                    <img src="images/IMG-20230723-WA0003.jpg" alt="">
+                </div>
+            </div>
+            <div class="details">
+                <h1>Lorem ipsum dolor sit amet.</h1>
+                <p style="color: var(--grey);">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non veniam laboriosam, tempora molestias sit et
+                deleniti consectetur unde assumenda culpa quam ullam accusamus mollitia doloremque molestiae vitae rem
+                dignissimos voluptate aliquid cupiditate. Aperiam, sed?</p>
+                <h2>Special Price</h2>
+                <h1 style="font-size: 15px; color: red;"><span style="font-size: 25px; color: rgb(73, 53, 250);">2500</span> <del style="font-size: 18px; color: var(--grey); font-style: italic;">3000</del> 75%</h1>
+                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                <h2>Select your Size According to size Chart</h2>
+                <div class="sizes">
+                    <div class="size" id="three">3</div>
+                    <div class="size" id="four">4</div>
+                    <div class="size" id="five">5</div>
+                    <div class="size" id="six">6</div>
+                    <div class="size" id="seven">7</div>
+                </div>
+                <span class="buttons">
+                <button class="buynow">Buy Now</button>
+                <!-- <button class="addToCart">Add to Cart</button> -->
+            </span>
+                
+        </div>
+    </section>
+</body>
+
+</html>
