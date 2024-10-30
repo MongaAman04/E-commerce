@@ -60,16 +60,14 @@
                 </div>
                 </div>
                 <div class="big-image">
-                    <img src="images/IMG-20230723-WA0003.jpg" alt="">
+                    <img src="${e.firstElementChild.src}" alt="">
                 </div>
             </div>
             <div class="details">
-                <h1>Lorem ipsum dolor sit amet.</h1>
-                <p style="color: var(--grey);">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non veniam laboriosam, tempora molestias sit et
-                deleniti consectetur unde assumenda culpa quam ullam accusamus mollitia doloremque molestiae vitae rem
-                dignissimos voluptate aliquid cupiditate. Aperiam, sed?</p>
+                <h1>${name.innerHTML}</h1>
+                <p style="color: var(--grey);">${description}</p>
                 <h2>Special Price</h2>
-                <h1 style="font-size: 15px; color: red;"><span style="font-size: 25px; color: rgb(73, 53, 250);">2500</span> <del style="font-size: 18px; color: var(--grey); font-style: italic;">3000</del> 75%</h1>
+                <h1 style="font-size: 15px; color: red;"><span style="font-size: 25px; color: rgb(73, 53, 250);">${price}</span> <del style="font-size: 18px; color: var(--grey); font-style: italic;">3000</del> 75%</h1>
                 <p>Lorem ipsum dolor sit amet consectetur.</p>
                 <h2>Select your Size According to size Chart</h2>
                 <div class="sizes">
@@ -78,14 +76,15 @@
                     <div class="size" id="five">5</div>
                     <div class="size" id="six">6</div>
                     <div class="size" id="seven">7</div>
-                </div>
-                <span class="buttons">
+            </div>
+            <span class="buttons">
                 <button class="buynow">Buy Now</button>
                 <!-- <button class="addToCart">Add to Cart</button> -->
             </span>
-                
+
         </div>
     </section>
+    <!-- <script src="script/script.js"></script> -->
 </body>
 
 </html>
