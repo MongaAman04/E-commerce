@@ -617,6 +617,9 @@ body {
     margin: 0 70px; */
     /* border: 2px solid black; */
 }
+.seller .best-p1 .description{
+    display: none;
+}
 .seller .load{
     width: 100%;
     display: flex;
