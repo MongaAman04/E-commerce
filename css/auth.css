@@ -89,3 +89,8 @@
    margin: 40% 0;
 
 }
+.forgot{
+    color: var(--primary-color);
+    cursor: pointer;
+    text-decoration: underline;
+}

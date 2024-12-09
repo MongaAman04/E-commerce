@@ -2,7 +2,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,9 +22,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-const button = document.querySelector("#submit")
+const signup = document.querySelector("#signup")
 
-button.addEventListener("click", function () {
+signup.addEventListener("click", function () {
     const email = document.querySelector("#mail").value;
     const repassword = document.querySelector("#repass").value;
     const password = document.querySelector("#pass").value;
@@ -50,6 +50,8 @@ button.addEventListener("click", function () {
     }
 
 })
+
+
 const change = document.querySelector(".change");
 change.addEventListener("click", () => {
     const firstHalf = document.querySelector(".first-half");
@@ -67,9 +69,48 @@ change.addEventListener("click", () => {
             <label for="password">Password</label>
             <input type="password" name="password" id="pass">
             <span><p>*Password does not match</p></span>
-           <button id="submit">LogIn</button>
+            <p class="forgot" id="forgot">Forget password?</p>
+           <button id="login">LogIn</button>
            <p class="change">New User? SignUp</p>
                                                                                       
         </div>`
+
+
+    login.addEventListener("click", () => {
+        const email = document.querySelector("#mail").value;
+        const password = document.querySelector("#pass").value;
+        const login = document.querySelector("#login");
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+
+                const user = userCredential.user;
+                window.location.href = "index.html"
+
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage)
+
+            });
     })
-    
+
+    const forgot = document.querySelector("#forgot");
+    forgot.addEventListener("click", ()=>{
+        const email =  document.querySelector("#mail").value;
+        const auth = getAuth();
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                // Password reset email sent!
+                // ..
+                alert(`Password Reset link is sent to your ${email}`)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
+    })
+})
+
