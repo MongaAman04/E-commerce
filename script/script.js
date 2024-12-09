@@ -1,4 +1,4 @@
-"use strict"
+"use strict" 
 let bestSeller = document.querySelector(".best-seller")
 let loadMore = document.querySelector(".load button")
 let mainBody = document.querySelector(".mainBody")

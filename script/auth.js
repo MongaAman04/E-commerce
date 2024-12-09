@@ -2,7 +2,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,28 +19,31 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+let isLoggedIn = false;
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
 const signup = document.querySelector("#signup")
 
 signup.addEventListener("click", function () {
+    const name = document.querySelector("#name").value;
     const email = document.querySelector("#mail").value;
     const repassword = document.querySelector("#repass").value;
     const password = document.querySelector("#pass").value;
     const warninng = document.querySelectorAll(".container span")
     if (password == repassword) {
         const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password,name)
             .then((userCredential) => {
-                const user = userCredential.user;
+                const user = userCredential.user;          
                 window.location.href = "index.html"
-
+                isLoggedIn  = true;
+                user.auth.displayName = name;
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.error(errorMessage);
+               console.warn(errorMessage);
+               
 
             });
     } else {
@@ -76,17 +79,17 @@ change.addEventListener("click", () => {
         </div>`
 
 
+    const login = document.querySelector("#login");
     login.addEventListener("click", () => {
         const email = document.querySelector("#mail").value;
         const password = document.querySelector("#pass").value;
-        const login = document.querySelector("#login");
         const auth = getAuth();
+        const sing_in_up = document.querySelector(".sing_in_up");
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-
                 const user = userCredential.user;
                 window.location.href = "index.html"
-
+                isLoggedIn = true;
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -102,14 +105,12 @@ change.addEventListener("click", () => {
         const auth = getAuth();
         sendPasswordResetEmail(auth, email)
             .then(() => {
-                // Password reset email sent!
-                // ..
                 alert(`Password Reset link is sent to your ${email}`)
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                // ..
+                alert(errorMessage)
             });
     })
 })
